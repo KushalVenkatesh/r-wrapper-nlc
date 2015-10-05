@@ -38,4 +38,4 @@ The pre-requirement is:
 
 * You must have curl command instaled in your machine.
 
-We suggest to you use RStudio enviroment. This project already has a Rproj file (r-wrapper.Rproj).
+We suggest to you use RStudio enviroment. This project already has a Rproj file (r-wrapper-nlc.Rproj).
