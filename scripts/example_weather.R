@@ -104,6 +104,8 @@ hist(results[results$answer == 'miss',c('confidence')],
 par(mfrow=c(1,1))
 boxplot(results$confidence ~ results$answer, 
         col="cyan", main="Confidence versus accuracy",
-        ylab="Confidence")
+        ylab="Confidence", xlab="Accura")
 
-
+plot(results$realClass, results$answer, col=c('green','red'),
+     xlab="Classes", ylab="Accuracy", 
+     main="Accuracy per class")
