@@ -15,7 +15,7 @@ Which this wrapper anyone (who knows R) can easily create, evaluate and publish 
 Structure
 ---------
 
-All NLC functions are defined in r-wrapper.R file. The main functions are:
+All NLC functions are defined in r_wrapper_nlc.R file. The main functions are:
 
 * setCredentials (user, passwd)
 * createClassifier (trainingData, language, name)
@@ -25,7 +25,7 @@ All NLC functions are defined in r-wrapper.R file. The main functions are:
 * deleteAllClassifiers (classifiersId)
 * statusClassifier (classifierId)
 
-Besides these functions, there are other functions related to the evaluation. Functions related to the model evaluation are defined in ModelEvaluation.R script. These functions are:
+Besides these functions, there are other functions related to the evaluation. Functions related to the model evaluation are defined in model_evaluation.R script. These functions are:
 
 * test (classifierId, testDataset)
 
@@ -36,6 +36,6 @@ Pre-requirements
 
 The pre-requirement is:
 
-* You must have curl command instaled in your machine.
+* You must have the curl command instaled in your machine. If you are using a Unix like (Linux, Mac OS) system, probably the curl command is already instaled. Otherwise, you can download a source archive [here](http://curl.haxx.se/download.html).
 
-We suggest to you use RStudio enviroment. This project already has a Rproj file (r-wrapper-nlc.Rproj).
+We suggest to you use RStudio enviroment to improve your productivity. This project already has a Rproj file (r-wrapper-nlc.Rproj).
