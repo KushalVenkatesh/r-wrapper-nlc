@@ -27,7 +27,7 @@ dataset$text <- as.character(dataset$text)
 # Set up the credentials of NLC and cleaning the NLC instance
 #
 
-setCredentials("3b651ba2-026d-4312-9b0b-6932dd50e6cd", "cwZgnJIkdhPb")
+setCredentials("<USERNAME>", "<PASSWORD>")
 classifiers <- as.data.frame(fromJSON(listClassifiers()))
 deleteAllClassifiers(classifiers$classifiers.classifier_id)
 

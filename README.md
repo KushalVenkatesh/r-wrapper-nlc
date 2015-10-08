@@ -39,3 +39,7 @@ The pre-requirement is:
 * You must have the curl command instaled in your machine. If you are using a Unix like (Linux, Mac OS) system, probably the curl command is already instaled. Otherwise, you can download a source archive [here](http://curl.haxx.se/download.html).
 
 We suggest to you use RStudio enviroment to improve your productivity. This project already has a Rproj file (r-wrapper-nlc.Rproj).
+
+Running an example
+------------------
+
