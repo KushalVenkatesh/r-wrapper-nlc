@@ -43,3 +43,25 @@ We suggest to you use RStudio enviroment to improve your productivity. This proj
 Running an example
 ------------------
 
+This wrapper can be used to create and validate models using Natural Language Classifier Service. An example is
+presented in script example_weather.R. To run a complete analysis you can:
+
+1. Open the file scripts/example_weather.R
+2. Load all necessary libraries:
+
+````
+library(xlsx)
+library(jsonlite)
+library(caret)
+source('scripts/r_wrapper_nlc.R')
+source('scripts/model_evaluation.R')
+````
+
+3. Set the language of NLC and temporary directory:
+
+````
+language <- 'en'
+directory <- 'weather'
+````
+
+4. 
