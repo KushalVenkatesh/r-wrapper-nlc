@@ -46,8 +46,8 @@ Running an example
 This wrapper can be used to create and validate models using Natural Language Classifier Service. An example is
 presented in script example_weather.R. To run a complete analysis you can:
 
-1. Open the file scripts/example_weather.R
-2. Load all necessary libraries:
+* Open the file scripts/example_weather.R
+* Load all necessary libraries:
 
 ````
 library(xlsx)
@@ -57,11 +57,35 @@ source('scripts/r_wrapper_nlc.R')
 source('scripts/model_evaluation.R')
 ````
 
-3. Set the language of NLC and temporary directory:
+* Set the language of NLC and temporary directory:
 
 ````
 language <- 'en'
 directory <- 'weather'
 ````
 
-4. 
+* Pre-processing, filtering and cleaning the dataset:
+
+````
+dataset <- read.csv('dataset/weather_data_train.csv', header = FALSE)
+names(dataset) <- c('text','class')
+sapply(dataset, class)
+dataset$text <- as.character(dataset$text)
+````
+
+* Set up the credentials of NLC and, if necessary, cleaning old NLC instances. In order to
+set the credentials, you need to replace <USERNAME> and <PASSWORD> by the correct NLC 
+credentials. 
+
+````
+setCredentials("<USERNAME>", "<PASSWORD>")
+classifiers <- as.data.frame(fromJSON(listClassifiers()))
+deleteAllClassifiers(classifiers$classifiers.classifier_id)
+````
+
+You may need to validate your model using a N-fold cross validation or other type
+of validation method. In example_weather.R script I used a 5-fold cross validation. 
+
+At the of this script there are some plot examples that can be useful too.
+
+
