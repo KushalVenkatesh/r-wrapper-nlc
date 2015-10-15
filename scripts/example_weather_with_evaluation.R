@@ -87,12 +87,18 @@ results$confidence <- as.numeric(results$confidence)
 results$answer <- as.factor(
   ifelse(results$realClass == results$predicted, "hit", "miss"))
 
+png(filename = 'results/datasetDistribution.png', width = 2200, height = 800,
+    pointsize = 24)
+par(cex.axis=0.5)
+par(las=2)
 barplot(sort(table(dataset$class)),
         main="Class distribution in dataset",
         xlab="Unique class ID",
         ylab="Number of question-answer pairs",
         col="blue")
+dev.off()
 
+png(filename = 'results/datasetHitsMissesConfidence.png')
 par(mfrow=c(2,1))
 hist(results[results$answer == 'hit',c('confidence')],
      xlim=c(0,1), col='green', breaks = 100,
@@ -100,12 +106,20 @@ hist(results[results$answer == 'hit',c('confidence')],
 hist(results[results$answer == 'miss',c('confidence')],
      xlim=c(0,1), col='red', breaks = 100,
      main="Misses - Confidence", xlab="Confidence")
+dev.off()
 
+png(filename = 'results/datasetHitsMissesConfidenceBoxplot.png')
 par(mfrow=c(1,1))
 boxplot(results$confidence ~ results$answer, 
         col="cyan", main="Confidence versus accuracy",
-        ylab="Confidence", xlab="Accura")
+        ylab="Confidence", xlab="Accuracy")
+dev.off()
 
+png(filename = 'results/datasetAccuracyPerClass.png', width = 2200, height = 800,
+    pointsize = 24)
+par(cex.axis=0.5)
+par(las=2)
 plot(results$realClass, results$answer, col=c('green','red'),
      xlab="Classes", ylab="Accuracy", 
      main="Accuracy per class")
+dev.off()
