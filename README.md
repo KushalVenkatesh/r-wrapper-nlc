@@ -43,10 +43,58 @@ We suggest to you use RStudio enviroment to improve your productivity. This proj
 Running an example
 ------------------
 
-This wrapper can be used to create and validate models using Natural Language Classifier Service. An example is
-presented in script example_weather.R. To run a complete analysis you can:
+This wrapper can be used to train instances of Natural Language Classifier Service. An example is presented
+in script example_weather.R. It is very simple to use this script:
 
 * Open the file scripts/example_weather.R
+* Load all necessary libraries:
+
+````
+library(jsonlite)
+source('scripts/r_wrapper_nlc.R')
+````
+
+* Set up the credentials of NLC and, if necessary, cleaning old NLC instances. In order to
+set the credentials, you need to replace <USERNAME> and <PASSWORD> by the correct NLC 
+credentials. 
+
+````
+setCredentials("<USERNAME>", "<PASSWORD>")
+````
+
+* Train the NLC using a CVS file.
+
+````
+result <- createClassifier('dataset/weather_data_train.csv',
+                           'en','Weather Example')
+classifiers <- as.data.frame(fromJSON(listClassifiers()))
+status_classifier <- fromJSON(
+  statusClassifier(classifiers[6,1]))
+````
+
+* Check the status of classifier.
+
+````
+status_classifier$status
+````
+
+* When the status_classifier$status is equal to "Available" then 
+you can use the NLC instance to classify texts.
+
+````
+classify(status_classifier$classifier_id, "Is it cold outside?")
+# converting JSON to list
+result <- fromJSON(classify(status_classifier$classifier_id, "Is it cold outside?"))
+````
+
+
+Running an example with evaluation
+----------------------------------
+
+This wrapper can be used to create and validate models using Natural Language Classifier Service. An example is
+presented in script example_weather_with_evaluation.R. To run a complete analysis you can:
+
+* Open the file scripts/example_weather_with_evalution.R
 * Load all necessary libraries:
 
 ````
